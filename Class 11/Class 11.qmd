@@ -1,0 +1,67 @@
+---
+title: "Class 11 - Alpha Fold"
+author: "Vivian Chau (A16913056)"
+format: pdf
+---
+
+Here we analyze our AlphaFold structure prediction models The input directory/folder comes from the ColabFold server: RBP4_0afab.result.zip
+
+To visualize my model PDB files, Mol* was used:
+
+![Superposed Model of PDB Structure Colored by pLDDT Scores](RBP4.png)
+
+```{r}
+results_dir <- "RBP4_0afab"
+results_dir
+```
+
+```{r}
+# File names for all PDB models
+pdb_files <- list.files(path=results_dir,
+                        pattern=".pdb",
+                        full.names = TRUE)
+
+# Print our PDB file names
+basename(pdb_files)
+```
+I will use the Bio3D package for analysis 
+
+```{r}
+library(bio3d)
+
+# Read all data from Models 
+#  and superpose/fit coords
+pdbs <- pdbaln(pdb_files, fit=TRUE, exefile="msa")
+```
+
+A quick view of these model sequences:
+```{r}
+pdbs
+```
+
+## A Quick PCA
+```{r}
+pc.rbp<-pca(pdbs)
+pc.rbp
+```
+
+```{r}
+plot(pc.rbp)
+```
+
+## RMSD Analysis 
+RMSD is a common measure of structural distance used in structural biology 
+
+```{r}
+rd <- rmsd(pdbs, fit=T)
+range(rd)
+```
+
+```{r}
+library(pheatmap)
+
+colnames(rd) <- paste0("m",1:5)
+rownames(rd) <- paste0("m",1:5)
+pheatmap(rd)
+```
+
