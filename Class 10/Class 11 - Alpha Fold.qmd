@@ -1,0 +1,32 @@
+---
+title: "Class 11 - Alpha Fold"
+author: "Vivian Chau (A16913056)"
+format: html
+---
+
+Here we  analyze our AlphaFold structure prediction models The input directory/folder comes from the ColabFold server: RBP4_0afab.result.zip
+
+To visualize the model PDB files, Mol* is used. 
+
+![RBP4 Predicted Superposed Structure Colored by pLDDT Scores](RBP4.png)
+
+
+```{r}
+pdb_files<-c("RBP4_0afab_unrelaxed_rank_001_alphafold2_ptm_model_3_seed_000.pdb",
+"RBP4_0afab_unrelaxed_rank_002_alphafold2_ptm_model_5_seed_000.pdb", "RBP4_0afab_unrelaxed_rank_003_alphafold2_ptm_model_4_seed_000.pdb", "RBP4_0afab_unrelaxed_rank_004_alphafold2_ptm_model_1_seed_000.pdb", "RBP4_0afab_unrelaxed_rank_005_alphafold2_ptm_model_2_seed_000.pdb" )
+pdb_files
+```
+
+I will use Bio3d for analysis
+```{r}
+library(bio3d)
+```
+
+```{r}
+# Read all data from Models 
+#  and superpose/fit coords
+
+pdbs <- pdbaln(pdb_files, fit=TRUE, exefile="msa")
+pdbs
+```
+
