@@ -14,6 +14,7 @@ Class 7 - [R Packages, working with CRAN, and working with Bioconductor](https:/
 
 
 Using R and Other Tools for Bioinformatics Analysis 
+
 Class 8 - [An Introduction to Machine Learning (Hierarchical Clustering)](https://github.com/vichau03/bimm-143/blob/edd9446208949db565964cef3346e32fcc5fece7/Class%208/Class%208.qmd)
 
 Class 9 - [Halloween Candy Mini-Project](https://github.com/vichau03/bimm-143/blob/edd9446208949db565964cef3346e32fcc5fece7/Class%209/Class%209.qmd)
